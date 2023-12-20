@@ -12,6 +12,7 @@ const IMDBsearchlist = async (moviename): Promise<string> => {
     try {
       const response = await fetch(url, options);
       const result = await response.text();
+      console.log("data clicked", result)
       return result;
     } catch (error) {
       console.error(error);
