@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useRef, useEffect,useState } from 'react';
+import { motion } from "framer-motion";
 import { useQuery } from '@tanstack/react-query';
-import IMDBsearchlist from '@/services/data'
+import {searchIMDB} from '@/services/data'
+import { Image } from 'next/image';
 
 const page = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [definition, setDefinition] = useState('');
+  const [parsedData, setParsedData] = useState([]);
 
   const handleInputChange = (event:any) => {
     setSearchTerm(event.target.value);
@@ -16,9 +18,9 @@ const page = () => {
 
   var { isLoading, data, refetch } = useQuery({
     queryKey: ['movieDetails'],
-    queryFn: () => IMDBsearchlist(searchTerm),
+    queryFn: () => searchIMDB(searchTerm),
     refetchOnWindowFocus: false,
-    enabled: false 
+    enabled: false
   }
   );
 
@@ -28,8 +30,8 @@ const page = () => {
 
 
   return (
-    <main>
-    <h1 className="text-8xl items-center pb-10 max-sm:pb-5 bg-gradient-to-r from-textGradientStart via-textGradientVia to-textGradientFrom font-bold inline-block text-transparent bg-clip-text">My Dictionary</h1>
+    <>
+    <main  className="flex flex-col items-center justify-between">
     <div className="mb-3">
       <div className="relative mb-4 flex w-full flex-wrap items-stretch">
         <input
@@ -51,13 +53,31 @@ const page = () => {
         </button>
       </div>
     </div>
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div>
         <div>
-          <h1 className="text-5xl">Here is the Meaning:</h1>
-          <span className="p-10"><br />{data}</span>
+          <h1 className="text-5xl">Your favourites</h1>
+          {data && JSON.parse(data).data ? (
+              <div>
+                {JSON.parse(data).data.map((item) => (
+                  <div key={item.id}>
+                    <motion.div className="cursor-grab overflow-hidden">
+                      <motion.div className="flex bg-blue-300">
+                        <motion.div className="min-h-40 w-1/3 p-40">
+                        {/* <Image src="/image1.jpg" width={500} height={100} alt="Picture of the author" /> */}
+                    <p>{item.title}</p>
+                        </motion.div>
+                      </motion.div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No Movies available.</p>
+            )}
         </div>
     </div>
   </main>
+  </>
   )
 }
 
