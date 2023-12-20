@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import TanstackProvider from '@/provider/TanStackProvider'
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 import Sidebar from "@/components/sidebar";
 
@@ -19,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <TanstackProvider>
       <div className="flex  dark:text-white dark:bg-black">
           <Sidebar />
           <div className="p-8">{children}</div>
         </div>
+        </TanstackProvider>
       </body>
     </html>
   )
