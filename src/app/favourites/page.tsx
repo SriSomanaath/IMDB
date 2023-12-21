@@ -3,6 +3,11 @@
 import { getFanFavorites } from '@/services/data';
 import { useQuery } from '@tanstack/react-query';
 
+// import { Swiper, SwiperSlide, Pagination } from 'swiper/react';
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+
+
 const Page = () => {
   const { isLoading, data } = useQuery({
     queryKey: ['getFanFavorites'],
@@ -28,18 +33,36 @@ const Page = () => {
         </div>
       </div>
       <div>
-  {data && data.data ? (
-    <div>
-      {JSON.parse(data).data.list.map((item) => (
-        <div key={item.id}>
-          <p>{item.originalTitleText.text}</p>
-        </div>
-      ))}
-    </div>
-  ) : (
-    <p>No Movies available.</p>
-  )}
-</div>
+        {data && JSON.parse(data).data ? (
+          <div>
+            {JSON.parse(data).data.list.map((item) => (
+              <div key={item.id}>
+                <p>{item.originalTitleText.text}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No Movies available.</p>
+        )}
+      </div>
+      {/* <Swiper
+          slidesPerView={4}
+          spaceBetween={5}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          <SwiperSlide>Slide1</SwiperSlide>
+          <SwiperSlide>Slide2</SwiperSlide>
+          <SwiperSlide>Slide3</SwiperSlide>
+          <SwiperSlide>Slide4</SwiperSlide>
+          <SwiperSlide>Slide5</SwiperSlide>
+          <SwiperSlide>Slide6</SwiperSlide>
+          <SwiperSlide>Slide7</SwiperSlide>
+          <SwiperSlide>Slide8</SwiperSlide>
+      </Swiper> */}
     </main>
   );
 };

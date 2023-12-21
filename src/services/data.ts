@@ -13,6 +13,8 @@ const searchIMDB = async (moviename: string): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
+    const params = JSON.parse(result)
+    console.log("jsjsbdjb", params.data[0]['image'])
     return result;
   } catch (error) {
     console.error(error);
@@ -38,7 +40,8 @@ const getFanFavorites = async (): Promise<string> => {
     const response = await fetch(url, options);
     const result = await response.text();
     console.log("jhjdfgajgbb",result);
-    return result
+    console.log("ssssssssss",result.data)
+    return result;
   } catch (error) {
     console.error(error);
   }

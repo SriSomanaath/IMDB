@@ -1,10 +1,17 @@
 "use client";
 
 import { useRef, useEffect,useState } from 'react';
-import { motion } from "framer-motion";
 import { useQuery } from '@tanstack/react-query';
 import {searchIMDB} from '@/services/data'
-import { Image } from 'next/image';
+import Image from 'next/image';
+
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+// import SwiperCore, { Navigation, Pagination } from 'swiper';
+
+// SwiperCore.use([Navigation, Pagination]);
 
 const page = () => {
 
@@ -53,28 +60,20 @@ const page = () => {
         </button>
       </div>
     </div>
-    <div>
-        <div>
+    <div className="flex flex-row">
           <h1 className="text-5xl">Your favourites</h1>
           {data && JSON.parse(data).data ? (
               <div>
                 {JSON.parse(data).data.map((item) => (
                   <div key={item.id}>
-                    <motion.div className="cursor-grab overflow-hidden">
-                      <motion.div className="flex bg-blue-300">
-                        <motion.div className="min-h-40 w-1/3 p-40">
-                        {/* <Image src="/image1.jpg" width={500} height={100} alt="Picture of the author" /> */}
-                    <p>{item.title}</p>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
+                        <Image src={item.image} width={500} height={100} alt="Picture of the author" />
+                        <p>{item.title}</p>
                   </div>
                 ))}
               </div>
             ) : (
               <p>No Movies available.</p>
             )}
-        </div>
     </div>
   </main>
   </>
