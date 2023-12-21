@@ -37,7 +37,8 @@ const getFanFavorites = async (): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
+    console.log("jhjdfgajgbb",result);
+    return result
   } catch (error) {
     console.error(error);
   }
@@ -60,7 +61,8 @@ const getWeekTop10 = async (): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
+    console.log("gvjhlygvl",result);
+    return result
   } catch (error) {
     console.error(error);
   }

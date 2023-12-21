@@ -1,15 +1,13 @@
 "use client";
 
-import {getFanFavorites} from '@/services/data'
+import {getWeekTop10} from '@/services/data'
 import { useQuery } from '@tanstack/react-query';
 
 const Page = () => {
 
-  var { isLoading, data, refetch } = useQuery({
-    queryKey: ['dictionary'],
-    queryFn: getFanFavorites,
-    refetchOnWindowFocus: false,
-    enabled: false 
+  var { isLoading, data } = useQuery({
+    queryKey: ['getWeekTop10'],
+    queryFn: getWeekTop10
   }
   );
 
@@ -30,7 +28,17 @@ const Page = () => {
         </div>
       </div>
       <div>
-        cards
+      {data && JSON.parse(data).data ? (
+              <div>
+                {JSON.parse(data).data.map((item) => (
+                  <div key={item.id}>
+                        <p>{item.originalTitleText.text}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No Movies available.</p>
+            )}
       </div>
     </main>
   );
