@@ -28,7 +28,7 @@ const Page = () => {
         </div>
       </div>
       <div className="flex min-h-screen items-center justify-center flex-wrap">
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 mt-10 mb-10">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:mt-10 lg:mb-10">
         {data && JSON.parse(data).data ? (
           <>
             {JSON.parse(data).data.list.map((item:any) => (

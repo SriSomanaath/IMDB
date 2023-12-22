@@ -77,7 +77,7 @@ const page = () => {
             ))}
           </>
         ) : (
-          <p>Loading.........please wait</p>
+          <p>Search for entertainment</p>
         )}
       </div>
     </div>
