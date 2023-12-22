@@ -5,8 +5,6 @@ import { useQuery } from '@tanstack/react-query';
 import {searchIMDB} from '@/services/data'
 import Image from 'next/image';
 
-import Slider from 'react-slick';
-
 const page = () => {
   
 
