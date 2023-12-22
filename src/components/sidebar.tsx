@@ -93,7 +93,7 @@ export default function Sidebar({}: Props) {
   return (
     <div
       className={cn(
-        "min-h-screen max-h-screen overflow-y-auto w-fit md:pr-8 pr-3 pt-2 flex flex-col gap-3 border-r-[1px] pl-[50px]",
+        "min-h-screen max-h-screen lg:overflow-y-auto w-fit md:pr-8 pr-3 lg:pt-2 max-sm:pr-3 flex flex-col gap-3 border-r-[1px] pl-[50px] max-sm:pl-[5px]",
         isSidebarOpen && "md:w-[300px]"
       )}
     >
