@@ -60,7 +60,7 @@ const page = () => {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 mt-10 mb-10">
         {data && JSON.parse(data).data ? (
           <>
-            {JSON.parse(data).data.map((item) => (
+            {JSON.parse(data).data.map((item:any) => (
               <div key={item.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30  rounded-2xl">
                 <div className="h-96 w-72">
                   <img

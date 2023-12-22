@@ -32,24 +32,11 @@ const Page = () => {
           </div>
         </div>
       </div>
-      {/* <div>
-        {data && JSON.parse(data).data ? (
-          <div>
-            {JSON.parse(data).data.list.map((item) => (
-              <div key={item.id}>
-                <p>{item.originalTitleText.text}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No Movies available.</p>
-        )}
-      </div> */}
       <div className="flex min-h-screen items-center justify-center flex-wrap">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 mt-10 mb-10">
         {data && JSON.parse(data).data ? (
           <>
-            {JSON.parse(data).data.list.map((item) => (
+            {JSON.parse(data).data.list.map((item:any) => (
               <div key={item.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30  rounded-2xl">
                 <div className="h-96 w-72">
                   <img
