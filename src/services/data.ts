@@ -13,7 +13,7 @@ const searchIMDB = async (moviename: string): Promise<string> => {
 try {
   const response = await fetch(url, options);
   const result = await response.text();
-  console.log("jsjsbdjb", result);
+  console.log("DG:searchIMDB data", result);
   return result;
 } catch (error) {
   console.error(error);
@@ -38,8 +38,7 @@ const getFanFavorites = async (): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log("jhjdfgajgbb", result);
-    console.log("ssssssssss", result.data); // This line might cause an issue, see note below
+    console.log("DG:getFanFavorites data", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -64,7 +63,7 @@ const getWeekTop10 = async (): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log("gvjhlygvl", result);
+    console.log("DG:getWeekTop10 data", result);
     return result;
   } catch (error) {
     console.error(error);
