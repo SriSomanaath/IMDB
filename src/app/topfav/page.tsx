@@ -23,12 +23,12 @@ const Page = () => {
           </p>
         </div>
         <div className="flex flex-col items-start justify-start gap-y-2.5 text-black-100">
-          <div className="relative xl:w-full w-[90%] xl:h-full max-sm:h-[100px] h-[590px] z-0">
+          <div className="relative xl:w-full w-[90%] xl:h-full max-sm:h-[100px] h-[590px] z-0 max-sm:h-[30px] sm:h-[30px]">
           </div>
         </div>
       </div>
       <div className="flex min-h-screen items-center justify-center flex-wrap">
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:mt-10 lg:mb-10">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:mt-10 lg:mb-10 md:mt-2 md:mb-2 sm:mt-2 sm:mb-2 ">
         {data && JSON.parse(data).data ? (
           <>
             {JSON.parse(data).data.map((item:any) => (

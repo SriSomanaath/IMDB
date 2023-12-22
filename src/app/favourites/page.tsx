@@ -23,7 +23,7 @@ const Page = () => {
           </p>
         </div>
         <div className="flex flex-col items-start justify-start gap-y-2.5 text-black-100">
-          <div className="relative xl:w-full w-[90%] xl:h-full max-sm:h-[100px] h-[590px] z-0">
+          <div className="relative xl:w-full w-[90%] xl:h-full max-sm:h-[100px] h-[590px] z-0 max-sm:h-[30px] sm:h-[30px]">
           </div>
         </div>
       </div>
