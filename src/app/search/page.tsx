@@ -3,7 +3,6 @@
 import { useRef, useEffect,useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {searchIMDB} from '@/services/data'
-import Image from 'next/image';
 
 const page = () => {
   

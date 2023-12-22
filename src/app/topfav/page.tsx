@@ -2,7 +2,6 @@
 
 import {getWeekTop10} from '@/services/data'
 import { useQuery } from '@tanstack/react-query';
-import { Image } from 'next/image';
 
 const Page = () => {
 

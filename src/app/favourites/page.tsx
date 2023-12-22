@@ -3,11 +3,6 @@
 import { getFanFavorites } from '@/services/data';
 import { useQuery } from '@tanstack/react-query';
 
-// import { Swiper, SwiperSlide, Pagination } from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/pagination';
-
-
 const Page = () => {
   const { isLoading, data } = useQuery({
     queryKey: ['getFanFavorites'],
