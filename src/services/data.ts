@@ -10,16 +10,15 @@ const searchIMDB = async (moviename: string): Promise<string> => {
     },
   };
 // params.data[0]['image']
-  try {
-    const response = await fetch(url, options);
-    const result = await response.text();
-    const params = JSON.parse(result)
-    console.log("jsjsbdjb", result)
-    return result;
-  } catch (error) {
-    console.error(error);
-    throw new Error('Failed to fetch data from IMDB API');
-  }
+try {
+  const response = await fetch(url, options);
+  const result = await response.text();
+  console.log("jsjsbdjb", result);
+  return result;
+} catch (error) {
+  console.error(error);
+  throw new Error('Failed to fetch data from IMDB API');
+}
 };
 
 export { searchIMDB };
@@ -39,11 +38,12 @@ const getFanFavorites = async (): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log("jhjdfgajgbb",result);
-    console.log("ssssssssss",result.data)
+    console.log("jhjdfgajgbb", result);
+    console.log("ssssssssss", result.data); // This line might cause an issue, see note below
     return result;
   } catch (error) {
     console.error(error);
+    throw new Error('Failed to fetch fan favorites from IMDB API');
   }
 };
 
@@ -64,10 +64,11 @@ const getWeekTop10 = async (): Promise<string> => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log("gvjhlygvl",result);
-    return result
+    console.log("gvjhlygvl", result);
+    return result;
   } catch (error) {
     console.error(error);
+    throw new Error('Failed to fetch week top 10 from IMDB API');
   }
 };
 
