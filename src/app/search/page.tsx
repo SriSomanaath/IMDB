@@ -5,15 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 import {searchIMDB} from '@/services/data'
 import Image from 'next/image';
 
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import SwiperCore, { Navigation, Pagination } from 'swiper';
-
-// SwiperCore.use([Navigation, Pagination]);
+import Slider from 'react-slick';
 
 const page = () => {
+  
 
   const [searchTerm, setSearchTerm] = useState('');
   const [definition, setDefinition] = useState('');
@@ -60,21 +55,36 @@ const page = () => {
         </button>
       </div>
     </div>
-    <div className="flex flex-row">
-          <h1 className="text-5xl">Your favourites</h1>
-          {data && JSON.parse(data).data ? (
-              <div>
-                {JSON.parse(data).data.map((item) => (
-                  <div key={item.id}>
-                        <Image src={item.image} width={500} height={100} alt="Picture of the author" />
-                        <p>{item.title}</p>
-                  </div>
-                ))}
+    <h1 className="text-5xl">Your favourites</h1>
+    <div className="flex min-h-screen items-center justify-center flex-wrap">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 mt-10 mb-10">
+        {data && JSON.parse(data).data ? (
+          <>
+            {JSON.parse(data).data.map((item) => (
+              <div key={item.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30  rounded-2xl">
+                <div className="h-96 w-72">
+                  <img
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                    src={item.image}
+                    alt="movie"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+                <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                  <h1 className="font-dmserif text-3xl font-bold text-white mb-20">{item.title}</h1>
+                  <p className="mb-3 text-xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Stars/Movie:</p>
+                  <p className="text-white">{item.stars}</p>
+                  <button className="rounded-full bg-[#00df9a] py-2 px-3.5 font-com text-sm capitalize text-black shadow shadow-black/60">See More</button>
+                </div>
               </div>
-            ) : (
-              <p>No Movies available.</p>
-            )}
+            ))}
+          </>
+        ) : (
+          <p></p>
+        )}
+      </div>
     </div>
+
   </main>
   </>
   )

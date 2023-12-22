@@ -2,6 +2,7 @@
 
 import {getWeekTop10} from '@/services/data'
 import { useQuery } from '@tanstack/react-query';
+import { Image } from 'next/image';
 
 const Page = () => {
 
@@ -14,7 +15,7 @@ const Page = () => {
   return (
     <main>
       <div className="flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1440px] mx-auto">
-        <div className="flex-1 pt-36 padding-x">
+        <div className="flex-1 padding-x">
           <h1 className="2xl:text-[72px] sm:text-[64px] text-[50px] font-extrabold">
             Find what are people's favourite
           </h1>
@@ -27,19 +28,34 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div>
-      {data && JSON.parse(data).data ? (
-              <div>
-                {JSON.parse(data).data.map((item) => (
-                  <div key={item.id}>
-                        <p>{item.originalTitleText.text}</p>
-                  </div>
-                ))}
+      <div className="flex min-h-screen items-center justify-center flex-wrap">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 mt-10 mb-10">
+        {data && JSON.parse(data).data ? (
+          <>
+            {JSON.parse(data).data.map((item) => (
+              <div key={item.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30  rounded-2xl">
+                <div className="h-96 w-72">
+                  <img
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                    src={item.primaryImage.imageUrl}
+                    alt="movie"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+                <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+                  <h1 className="font-dmserif text-3xl font-bold text-white mb-20">{item.title}</h1>
+                  <p className="mb-3 text-xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Stars/Movie:</p>
+                  <p className="text-white">{item.originalTitleText.text}</p>
+                  <button className="rounded-full bg-[#00df9a] py-2 px-3.5 font-com text-sm capitalize text-black shadow shadow-black/60">See More</button>
+                </div>
               </div>
-            ) : (
-              <p>No Movies available.</p>
-            )}
+            ))}
+          </>
+        ) : (
+          <p></p>
+        )}
       </div>
+    </div>
     </main>
   );
 };

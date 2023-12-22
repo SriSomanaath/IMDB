@@ -5,16 +5,16 @@ const searchIMDB = async (moviename: string): Promise<string> => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '8477b08720msh5b6ea6c6a4e0bc6p176943jsn96c42a4c8591',
+      'X-RapidAPI-Key': '5189f7637emsh1c21f09730c9945p113d9ejsn4da5a03c0b69',
       'X-RapidAPI-Host': 'imdb188.p.rapidapi.com',
     },
   };
-
+// params.data[0]['image']
   try {
     const response = await fetch(url, options);
     const result = await response.text();
     const params = JSON.parse(result)
-    console.log("jsjsbdjb", params.data[0]['image'])
+    console.log("jsjsbdjb", result)
     return result;
   } catch (error) {
     console.error(error);
@@ -31,7 +31,7 @@ const getFanFavorites = async (): Promise<string> => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '8477b08720msh5b6ea6c6a4e0bc6p176943jsn96c42a4c8591',
+      'X-RapidAPI-Key': '5189f7637emsh1c21f09730c9945p113d9ejsn4da5a03c0b69',
       'X-RapidAPI-Host': 'imdb188.p.rapidapi.com',
     },
   };
@@ -56,7 +56,7 @@ const getWeekTop10 = async (): Promise<string> => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '8477b08720msh5b6ea6c6a4e0bc6p176943jsn96c42a4c8591',
+      'X-RapidAPI-Key': '5189f7637emsh1c21f09730c9945p113d9ejsn4da5a03c0b69',
       'X-RapidAPI-Host': 'imdb188.p.rapidapi.com',
     },
   };

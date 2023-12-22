@@ -88,7 +88,7 @@ const sidebarItmes: SideNavItemType[] = [
   }
 ];
 export default function Sidebar({}: Props) {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div
